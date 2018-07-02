@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.example.mapper.UserMapper">
+	<insert id="insert">
+		INSERT IGNORE INTO user (user_id, user_name, first_name, last_name, password, creation_time) 
+		VALUES (#{userId},#{name},#{firstName},#{lastName},#{password},#{creationDate, jdbcType=TIMESTAMP})
+	</insert>
+	
+	<delete id="delete">
+		DELETE FROM user WHERE user_id = #{user.userId}
+	</delete>
+	
+	<update id="update">
+		UPDATE user SET 
+		user_name=#{user.userName}, first_name=#{user.firstName}, last_name=#{user.lastName}, password=#{user.password}
+		WHERE user_id=#{user.userId}
+	</update>	
+	
+	<select id="selectById" resultType="example.src.main.java.model.User">
+		SELECT * FROM user WHERE user_id = #{userId}
+	</select>
+	
+	<select id="selectByName" resultType="example.src.main.java.model.User">
+		SELECT * FROM user WHERE user_name = #{userName}
+	</select>
+	
+	<select id="selectByDpt" resultType="example.src.main.java.dto.UserDTO">
+		SELECT * FROM user_department LEFT JOIN user ON user_department.user_id = user.user_id WHERE dpt_id = #{dptId}
+	</select>
+	
+	
+</mapper>

@@ -9,37 +9,10 @@ import mybatis.example.model.User;
 
 @Mapper
 public interface UserMapper {
-	/* 
-	 * ADD USERS
-	 */
-	public void saveUser(User user);
-	
-	/*
-	 * DELETE USERS
-	 */
-	public void deleteUser(User user);
-	
-	/*
-	 * UPDATE USERS
-	 */
-	public void updateUser(User user);
-	
-	/*
-	 * SEARCH USER by ID
-	 */
-	public User getUserById(String userId); 
-	
-	/*
-	 * SEARCH USER by NAME
-	 */
-	public List<User> getUserByName(String name);
-	
-	/*
-	 * Search Users by Department Id
-	 * Return a List of User Objects
-	 */
-	public List<UserDTO> getUserByDpt(String dptId);
-	
-	
-
+	public void insert(User user);
+	public void delete(User user);
+	public void update(User user);
+	public User selectById(String userId);
+	public List<User> selectByName(String userName);
+	public List<UserDTO> selectByDpt(String dptId);
 }
